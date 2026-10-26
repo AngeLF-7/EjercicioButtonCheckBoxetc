@@ -34,7 +34,6 @@ class MainActivity : ComponentActivity() {
 fun PantallaBasica() {
     val coroutineScope = rememberCoroutineScope()
 
-    // Estados de la aplicación
     var textoBoton by remember { mutableStateOf("Presionar") }
     var mensajeTexto by remember { mutableStateOf("Mensaje oculto") }
     var mostrarTexto by remember { mutableStateOf(false) }
@@ -42,7 +41,7 @@ fun PantallaBasica() {
     var switchActivo by remember { mutableStateOf(false) }
     var opcionSeleccionada by remember { mutableStateOf("Android Studio") }
 
-    // Lista de imágenes
+    // LISTA DE IMÁGENES
     val imagenes = listOf(
         R.drawable.imagen1,
         R.drawable.imagen2,
@@ -58,7 +57,7 @@ fun PantallaBasica() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        // 4. ICONO PERSONALIZADO (Carga la imagen o vector de tu carpeta drawable)
+        // ICONO PERSONALIZADO
         Icon(
             painter = painterResource(id = R.drawable.icono),
             contentDescription = "Icono personalizado",
@@ -68,7 +67,7 @@ fun PantallaBasica() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 1. BOTÓN "Presionar"
+        // BOTÓN
         Button(
             onClick = {
                 textoBoton = "Botón presionado"
@@ -84,7 +83,6 @@ fun PantallaBasica() {
             Text(textoBoton)
         }
 
-        // Indicador de progreso circular
         if (cargando) {
             Spacer(modifier = Modifier.height(8.dp))
             CircularProgressIndicator()
@@ -92,7 +90,7 @@ fun PantallaBasica() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 3. CHECKBOX "Activar"
+        // CHECKBOX
         Row(verticalAlignment = Alignment.CenterVertically) {
             Checkbox(
                 checked = mostrarTexto,
@@ -101,7 +99,7 @@ fun PantallaBasica() {
             Text("Activar")
         }
 
-        // 2. CAMPO DE TEXTO OCULTO
+        // CAMPO DE TEXTO OCULTO
         if (mostrarTexto) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = mensajeTexto)
@@ -109,7 +107,7 @@ fun PantallaBasica() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // 5. INTERRUPTOR (SWITCH)
+        // SWITCH
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text("Mostrar opciones: ")
             Switch(
@@ -118,7 +116,7 @@ fun PantallaBasica() {
             )
         }
 
-        // 6. GRUPO DE RADIO BUTTONS
+        // RADIO BUTTONS
         if (switchActivo) {
             Spacer(modifier = Modifier.height(8.dp))
             Column {
@@ -141,7 +139,7 @@ fun PantallaBasica() {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // 7. IMAGEN QUE CAMBIA AL HACER CLIC EN EL BOTÓN
+        // IMAGEN QUE CAMBIA AL HACER CLIC EN EL BOTÓN
         Image(
             painter = painterResource(id = imagenes[indiceImagen]),
             contentDescription = "Imagen cambiante",
